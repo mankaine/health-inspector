@@ -1,6 +1,7 @@
 import React from 'react'
 import 'font-awesome/css/font-awesome.css'
 import './SearchBar.css'
+import PropTypes from 'prop-types'
 
 class SearchBar extends React.Component { 
   constructor() { 
@@ -21,8 +22,9 @@ class SearchBar extends React.Component {
   }
 
   handleSubmit = (e) => {
-    // Page refresh + rerender tendency in HTML - below stops such
+    // HTML naturally refreshes a page on click of button - below stops such from happening 
     e.preventDefault()
+    this.props.updateSearchTerm(this.state.search)
   }
 
   render() {
@@ -49,6 +51,10 @@ class SearchBar extends React.Component {
       </div>
     )
   }
+}
+
+PropTypes.PropTypes = {
+  updateSearchTerm: PropTypes.func.isRequired
 }
 
 export default SearchBar
