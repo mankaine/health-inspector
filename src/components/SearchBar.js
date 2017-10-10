@@ -1,4 +1,6 @@
 import React from 'react'
+import 'font-awesome/css/font-awesome.css'
+import './SearchBar.css'
 
 class SearchBar extends React.Component { 
   constructor() { 
@@ -18,7 +20,13 @@ class SearchBar extends React.Component {
     // Change the state in the HTML 
   }
 
+  handleSubmit = (e) => {
+    // Page refresh + rerender tendency in HTML - below stops such
+    e.preventDefault()
+  }
+
   render() {
+    // i is the tag for an icon element
     return (
       <div className="searchbar-container">
         <form className="search-form">
@@ -30,6 +38,13 @@ class SearchBar extends React.Component {
             placeholder="Search Restaurants"
             onChange={this.handleSearchChange}
          /> 
+         <button
+          type="submit" 
+          className="search-button"
+          onClick={this.handleSubmit}
+         >
+          <i className="search-icon fa fa-search" />
+         </button>
         </form>
       </div>
     )
